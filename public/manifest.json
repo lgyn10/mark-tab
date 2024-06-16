@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "mark-tab",
+  "description": "New Tab 활용하여 사용자의 웹 서핑 생산성을 높여주는 시작페이지 제공",
+  "version": "0.0.0",
+
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+
+  "permissions": ["bookmarks"],
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; script-src-elem 'self' 'unsafe-eval' https://ssug.api.search.zum.com https://contentsgt.cafe24.com; object-src 'self'; img-src chrome://favicon/ https://*.zumst.com/;",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}
