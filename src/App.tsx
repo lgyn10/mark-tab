@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+
+import './App.css';
+
+// BookmarkTreeNode 타입 정의
+interface BookmarkTreeNode {
+  id: string;
+  title: string;
+  children?: BookmarkTreeNode[];
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [stateSample] = useState('dd');
+
+  const handleAPI = () => {
+    const bookmarks = chrome.bookmarks.getTree().then((res) => {
+      return res[0].children?.at(0)?.children;
+    });
+    bookmarks.then((data) => {
+      const bookmarksArr: (BookmarkTreeNode | undefined)[] = data!
+        .map((item) => {
+          if (!item.children) {
+            return {
+              id: item.id,
+              title: item.title,
+            };
+          } else {
+            return undefined;
+          }
+        })
+        .filter((v) => v !== undefined);
+      console.log(bookmarksArr);
+    });
+  };
+
+  const showChromeAPI = () => {
+    const chromeAPI = chrome.bookmarks;
+    console.log(chromeAPI);
+  };
 
   return (
     <>
+      <h1>API 테스트</h1>
+      <div>{stateSample}</div>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <button onClick={handleAPI}>api test</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div>
+        <button onClick={showChromeAPI}>api 알아보기</button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
