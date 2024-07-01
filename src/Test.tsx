@@ -1,12 +1,5 @@
 import { useState } from 'react';
 
-// BookmarkTreeNode 타입 정의
-interface BookmarkTreeNode {
-  id: string;
-  title: string;
-  children?: BookmarkTreeNode[];
-}
-
 const Test = () => {
   const [stateSample] = useState('dd');
 
