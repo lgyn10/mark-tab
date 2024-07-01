@@ -31,6 +31,7 @@ const Test = () => {
   return (
     <>
       <h1>API 테스트</h1>
+      <a href='https://www.google.com'>구글 홈으로</a>
       <div>{stateSample}</div>
       <div>
         <button onClick={handleAPI}>api test</button>
