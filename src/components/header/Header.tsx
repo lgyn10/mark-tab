@@ -1,9 +1,9 @@
-import { Center } from '@chakra-ui/react';
+import { Center, Heading } from '@chakra-ui/react';
 const Header = () => {
   return (
     <>
       <Center bg='tomato' h='100px' color='white'>
-        This is the Center
+        <Heading as='h1'>This is the Center</Heading>
       </Center>
     </>
   );
