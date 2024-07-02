@@ -1,5 +1,5 @@
 import { Center } from '@chakra-ui/react';
-const Header = () => {
+const HeaderOne = () => {
   return (
     <>
       <Center bg='tomato' h='100px' color='white'>
@@ -9,4 +9,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderOne;
