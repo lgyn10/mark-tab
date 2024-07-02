@@ -1,12 +1,12 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import './App.css';
 import Test from './Test';
-import HeaderOne from './components/header/HeaderOne';
+import Header from './components/header/Header';
 
 function App() {
   return (
     <ChakraProvider>
-      <HeaderOne />
+      <Header />
       <Test />
     </ChakraProvider>
   );
