@@ -1,5 +1,5 @@
-const BoardContainer = () => {
-  return <div>BoardContainer</div>;
+const boardContainer = () => {
+  return <div>boardContainer</div>;
 };
 
-export default BoardContainer;
+export default boardContainer;
