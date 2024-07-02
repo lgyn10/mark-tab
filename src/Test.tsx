@@ -1,3 +1,4 @@
+import { Card } from '@chakra-ui/react';
 import { useState } from 'react';
 
 const Test = () => {
@@ -29,7 +30,7 @@ const Test = () => {
     console.log(chromeAPI);
   };
   return (
-    <>
+    <Card>
       <h1>API 테스트</h1>
       <a href='https://www.google.com'>구글 홈으로</a>
       <div>{stateSample}</div>
@@ -39,7 +40,7 @@ const Test = () => {
       <div>
         <button onClick={showChromeAPI}>api 알아보기</button>
       </div>
-    </>
+    </Card>
   );
 };
 
