@@ -5,7 +5,6 @@
   "version": "0.0.1",
   "action": {
     "default_icon": "marktab-logo.png",
-    "default_popup": "popup.html",
     "default_title": "My Extension"
   },
 
