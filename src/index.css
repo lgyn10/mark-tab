@@ -3,3 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+html,
+body,
+#root {
+  background-color: rgb(220, 188, 149); /* 원하는 배경 색상으로 변경 */
+}

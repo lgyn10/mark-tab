@@ -1,5 +1,5 @@
-const item = () => {
-  return <div>item</div>;
+const Item = () => {
+  return <div>Item</div>;
 };
 
-export default item;
+export default Item;
