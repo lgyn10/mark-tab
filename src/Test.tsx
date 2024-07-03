@@ -5,9 +5,17 @@ import styled from 'styled-components';
 const Test = () => {
   const [stateSample] = useState('dd');
 
-  const handleAPI = () => {
+  // tree 형태로 데이터 가져옴
+  const handleGetTreeAPI = () => {
     chrome.bookmarks.getTree().then((res) => {
-      console.log(res);
+      console.log(res[0]);
+    });
+  };
+
+  // 객체 형태로 데이터 가져옴
+  const handleGetAPI = () => {
+    chrome.bookmarks.get('1').then((res) => {
+      console.log(res[0]);
     });
   };
 
@@ -21,7 +29,10 @@ const Test = () => {
       <a href='https://www.google.com'>구글 홈으로</a>
       <div>{stateSample}</div>
       <div>
-        <button onClick={handleAPI}>api test</button>
+        <button onClick={handleGetTreeAPI}>api getTree 테스트</button>
+      </div>
+      <div>
+        <button onClick={handleGetAPI}>api get 알아보기</button>
       </div>
       <div>
         <button onClick={showChromeAPI}>api 알아보기</button>
