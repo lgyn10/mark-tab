@@ -1,6 +1,7 @@
 import { Card } from '@chakra-ui/react';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { BookmarkTreeNode } from './store/types';
 
 const Test = () => {
   const [stateSample] = useState('dd');

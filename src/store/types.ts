@@ -1,4 +1,4 @@
-interface BookmarkTreeNode {
+export interface BookmarkTreeNode {
   id: string;
   title: string;
   index?: number;
@@ -11,7 +11,12 @@ interface BookmarkTreeNode {
   unmodifiable?: 'managed';
 }
 
-interface CreateDetails {
+export interface BookmarkState {
+  bookmarks: BookmarkTreeNode[];
+  fetchBookmarks: () => void;
+}
+
+export interface CreateDetails {
   index?: number; // 지정하지 않으면 자동으로 지정해줄 듯
   parentId?: string;
   title?: string;
