@@ -1,6 +1,4 @@
-// type.ts
-
-type BookmarkTreeNode = {
+interface BookmarkTreeNode {
   id: string;
   title: string;
   index?: number;
@@ -10,12 +8,12 @@ type BookmarkTreeNode = {
   dateLastUsed?: number;
   dateGroupModified?: number;
   parentId?: string;
-  // unmodifiable?: 'managed';
-};
+  unmodifiable?: 'managed';
+}
 
-type CreateDetails = {
+interface CreateDetails {
   index?: number; // 지정하지 않으면 자동으로 지정해줄 듯
   parentId?: string;
   title?: string;
   url?: string;
-};
+}
