@@ -10,13 +10,15 @@ type TItemProps = {
 const Item = ({ itemTitle, itemUrl }: TItemProps) => {
   return (
     <StyledListItem>
-      <StyledBox>
+      <StyledTitleBox>
         <ListIcon as={InfoOutlineIcon} />
-        {itemTitle}
+        <StyledTitle>
           <StyledA href={itemUrl}>{itemTitle}</StyledA>
-      <StyledBox>
+        </StyledTitle>
+      </StyledTitleBox>
+      <StyledButtonBox>
         <StyledButton as={EditIcon}>...</StyledButton>
-      </StyledBox>
+      </StyledButtonBox>
     </StyledListItem>
   );
 };
@@ -33,9 +35,41 @@ const StyledListItem = styled(ListItem)`
   }
 `;
 
-const StyledBox = styled(Box)`
-  display: flex;
-  align-items: center;
+const StyledTitleBox = styled(Box)`
+  &&& {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    cursor: pointer; /* 마우스 커서 변경 */
+  }
+  :hover {
+    color: red; /* 호버 시 텍스트 색상 변경 */
+  }
+`;
+
+const StyledButtonBox = styled(Box)`
+  &&& {
+    text-align: right;
+    display: flex;
+    align-items: center;
+  }
+`;
+
+const StyledA = styled.a`
+  width: 100%;
+  color: inherit; /* 부모 요소의 색상 상속 */
+`;
+
+const StyledTitle = styled.div`
+  &&& {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  :hover {
+    color: red;
+  }
 `;
 
 const StyledButton = styled(Button)`
