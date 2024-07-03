@@ -1,19 +1,26 @@
 import { Card, CardHeader, Heading, List } from '@chakra-ui/react';
 import styled from 'styled-components';
+import { bookmarkStore } from '../../store';
 import Item from '../item/Item';
 
-const Board = (props: { title: string }) => {
-  const itemArr = ['item1', '아이템2', 'item3', 'item4', 'item', 'item', 'item', 'item', 'item'];
+type TBoardProps = {
+  boardId: string;
+  boardTitle: string;
+};
+
+const Board = ({ boardTitle, boardId }: TBoardProps) => {
+  const { bookmarkNode } = bookmarkStore();
+  const board = bookmarkNode?.children!.find((node) => node.id === boardId)?.children!;
   return (
     <Card borderRadius='8px' bg='#dddddd'>
       <StyledCardHeader>
         <Heading size='xm' textAlign='center'>
-          {props.title}
+          {boardTitle}
         </Heading>
       </StyledCardHeader>
       <StyledList>
-        {itemArr.map((item, idx) => (
-          <Item item={item} key={idx} />
+        {board.map((node) => (
+          <Item itemTitle={node.title} key={node.id} />
         ))}
       </StyledList>
     </Card>

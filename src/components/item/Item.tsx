@@ -2,12 +2,15 @@ import { EditIcon, InfoOutlineIcon } from '@chakra-ui/icons';
 import { Box, Button, ListIcon, ListItem } from '@chakra-ui/react';
 import styled from 'styled-components';
 
-const Item = (props: { item: string }) => {
+type TItemProps = {
+  itemTitle: string;
+};
+const Item = ({ itemTitle }: TItemProps) => {
   return (
     <StyledListItem>
       <StyledBox>
         <ListIcon as={InfoOutlineIcon} />
-        {props.item}
+        {itemTitle}
       </StyledBox>
       <StyledBox>
         <StyledButton as={EditIcon}>...</StyledButton>
