@@ -1,10 +1,16 @@
 import { Card } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { BookmarkTreeNode } from './store/types';
+import { bookmarkStore } from './store';
 
 const Test = () => {
   const [stateSample] = useState('dd');
+  const { bookmarkNode, fetchBookmarkTreeNode } = bookmarkStore();
+
+  useEffect(() => {
+    fetchBookmarkTreeNode();
+    console.log('useEffect activated');
+  }, []);
 
   const handleGetTreeAPI = () => {
     chrome.bookmarks.getTree().then((res) => {
@@ -13,10 +19,12 @@ const Test = () => {
   };
 
   // 북마크바 데이터 트리 조회
-  const handleGetSubTreeAPI = (id: string) => {
-    chrome.bookmarks.getSubTree(id).then((res) => {
-      console.log(res[0]);
+  const handleGetSubTreeAPI = async (id: string) => {
+    let result;
+    await chrome.bookmarks.getSubTree(id).then((res) => {
+      result = res;
     });
+    console.log(result);
   };
 
   const handleGetAPI = (id: string) => {
@@ -29,6 +37,11 @@ const Test = () => {
     const chromeAPI = chrome.bookmarks;
     console.log(chromeAPI);
   };
+
+  const handleZustandAPI = async () => {
+    fetchBookmarkTreeNode();
+  };
+
   return (
     <StyledCard>
       <h1>API 테스트</h1>
@@ -51,6 +64,18 @@ const Test = () => {
       </div>
       <div>
         <button onClick={showChromeAPI}>api 알아보기</button>
+      </div>
+      <div>
+        <button onClick={handleZustandAPI}>zustand API 사용</button>
+      </div>
+      <div>
+        <button
+          onClick={() => {
+            console.log(bookmarkNode);
+          }}
+        >
+          zustand API 사용 콘솔 확인
+        </button>
       </div>
     </StyledCard>
   );

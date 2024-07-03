@@ -1,7 +1,11 @@
 import { create } from 'zustand';
-import { createBookmarkStore } from './bookmarkStore';
-import { BookmarkStore } from './types';
+import { BookmarkState } from './types';
 
-export type RootState = BookmarkStore;
-
-export const bookmarkStore = create<RootState>((set, get) => {...createBookmarkStore(set, get)});
+// id = '2'인 기타 북마크 폴더만 가지고 crud 진행 예정
+export const bookmarkStore = create<BookmarkState>((set) => ({
+  bookmarkNode: null,
+  fetchBookmarkTreeNode: async () => {
+    const result = await chrome.bookmarks.getSubTree('2');
+    set({ bookmarkNode: result[0] });
+  },
+}));

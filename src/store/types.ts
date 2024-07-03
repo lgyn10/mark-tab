@@ -12,8 +12,8 @@ export interface BookmarkTreeNode {
 }
 
 export interface BookmarkState {
-  bookmarks: BookmarkTreeNode[];
-  fetchBookmarks: () => void;
+  bookmarkNode: BookmarkTreeNode | null;
+  fetchBookmarkTreeNode: () => void;
 }
 
 export interface CreateDetails {
