@@ -5,16 +5,21 @@ import styled from 'styled-components';
 const Test = () => {
   const [stateSample] = useState('dd');
 
-  // tree 형태로 데이터 가져옴
   const handleGetTreeAPI = () => {
     chrome.bookmarks.getTree().then((res) => {
       console.log(res[0]);
     });
   };
 
-  // 객체 형태로 데이터 가져옴
-  const handleGetAPI = () => {
-    chrome.bookmarks.get('1').then((res) => {
+  // 북마크바 데이터 트리 조회
+  const handleGetSubTreeAPI = (id: string) => {
+    chrome.bookmarks.getSubTree(id).then((res) => {
+      console.log(res[0]);
+    });
+  };
+
+  const handleGetAPI = (id: string) => {
+    chrome.bookmarks.get(id).then((res) => {
       console.log(res[0]);
     });
   };
@@ -32,7 +37,16 @@ const Test = () => {
         <button onClick={handleGetTreeAPI}>api getTree 테스트</button>
       </div>
       <div>
-        <button onClick={handleGetAPI}>api get 알아보기</button>
+        <button onClick={() => handleGetSubTreeAPI('1')}>api getSubTree 테스트</button>
+      </div>
+      <div>
+        <button onClick={() => handleGetSubTreeAPI('1')}>북마크바 트리 조회</button>
+      </div>
+      <div>
+        <button onClick={() => handleGetSubTreeAPI('2')}>기타 북마크 트리 조회</button>
+      </div>
+      <div>
+        <button onClick={() => handleGetAPI('1')}>api get 알아보기</button>
       </div>
       <div>
         <button onClick={showChromeAPI}>api 알아보기</button>
