@@ -4,14 +4,16 @@ import styled from 'styled-components';
 
 type TItemProps = {
   itemTitle: string;
+  itemUrl: string;
 };
-const Item = ({ itemTitle }: TItemProps) => {
+
+const Item = ({ itemTitle, itemUrl }: TItemProps) => {
   return (
     <StyledListItem>
       <StyledBox>
         <ListIcon as={InfoOutlineIcon} />
         {itemTitle}
-      </StyledBox>
+          <StyledA href={itemUrl}>{itemTitle}</StyledA>
       <StyledBox>
         <StyledButton as={EditIcon}>...</StyledButton>
       </StyledBox>
