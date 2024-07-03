@@ -6,23 +6,8 @@ const Test = () => {
   const [stateSample] = useState('dd');
 
   const handleAPI = () => {
-    const bookmarks = chrome.bookmarks.getTree().then((res) => {
-      return res[0].children?.at(0)?.children;
-    });
-    bookmarks.then((data) => {
-      const bookmarksArr: (BookmarkTreeNode | undefined)[] = data!
-        .map((item) => {
-          if (!item.children) {
-            return {
-              id: item.id,
-              title: item.title,
-            };
-          } else {
-            return undefined;
-          }
-        })
-        .filter((v) => v !== undefined);
-      console.log(bookmarksArr);
+    chrome.bookmarks.getTree().then((res) => {
+      console.log(res);
     });
   };
 
