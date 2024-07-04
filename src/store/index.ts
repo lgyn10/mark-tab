@@ -5,7 +5,11 @@ import { BookmarkState } from './types';
 export const bookmarkStore = create<BookmarkState>((set) => ({
   bookmarkNode: null,
   fetchBookmarkTreeNode: async () => {
-    const result = await chrome.bookmarks.getSubTree('2');
-    set({ bookmarkNode: result[0] });
+    try {
+      const result = await chrome.bookmarks.getSubTree('2');
+      set({ bookmarkNode: result[0] });
+    } catch (error) {
+      console.log('error', error);
+    }
   },
 }));
