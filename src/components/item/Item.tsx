@@ -1,5 +1,8 @@
 import { EditIcon, InfoOutlineIcon } from '@chakra-ui/icons';
 import { Box, Button, ListIcon, ListItem } from '@chakra-ui/react';
+// import axios from 'axios';
+// import cheerio from 'cheerio';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 type TItemProps = {
@@ -8,10 +11,26 @@ type TItemProps = {
 };
 
 const Item = ({ itemTitle, itemUrl }: TItemProps) => {
+  const [faviconUrl, setFaviconUrl] = useState('');
+
+  useEffect(() => {
+    try {
+      const originUrl = new URL(itemUrl).host;
+      //! 1.
+      const faviconURL = `http://www.google.com/s2/favicons?domain=${originUrl}`;
+      setFaviconUrl(faviconURL);
+      console.log(faviconURL);
+    } catch (err) {
+      // 일로 안넘어옴
+      console.log(err);
+      setFaviconUrl('');
+    }
+  }, []);
+
   return (
     <StyledListItem>
       <StyledTitleBox>
-        <ListIcon as={InfoOutlineIcon} />
+        {faviconUrl !== '' ? <StyledImg src={faviconUrl} /> : <ListIcon as={InfoOutlineIcon} />}
         <StyledTitle>
           <StyledA href={itemUrl}>{itemTitle}</StyledA>
         </StyledTitle>
@@ -80,4 +99,8 @@ const StyledButton = styled(Button)`
   :hover {
     color: red;
   }
+`;
+
+const StyledImg = styled.img`
+  background-color: transparent;
 `;
