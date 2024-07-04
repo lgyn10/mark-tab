@@ -1,29 +1,15 @@
 import { Container, SimpleGrid } from '@chakra-ui/react';
 import styled from 'styled-components';
+import { bookmarkStore } from '../../store';
 import Board from '../board/Board';
 
 const BoardContainer = () => {
-  const arr = [
-    'title1',
-    'title12',
-    'title13',
-    'title14',
-    'title15',
-    'title16',
-    'title17',
-    'title18',
-    'title19',
-    'title10',
-    'title11',
-    'title12',
-    'title13',
-    'title14',
-  ];
+  const { bookmarkNode } = bookmarkStore();
   return (
     <StyledContainer bg='white'>
       <StyledSimpleGrid columns={{ base: 2, md: 3, lg: 3 }} spacing={3}>
-        {arr.map((v, idx) => (
-          <Board title={v} key={idx} />
+        {bookmarkNode?.children!.map(({ id, title }) => (
+          <Board boardTitle={title} boardId={id} key={id} />
         ))}
       </StyledSimpleGrid>
     </StyledContainer>
