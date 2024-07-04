@@ -16,6 +16,10 @@ const Item = ({ itemTitle, itemUrl }: TItemProps) => {
   useEffect(() => {
     try {
       const originUrl = new URL(itemUrl).host;
+<<<<<<< HEAD
+=======
+      //! 1.
+>>>>>>> 587953cad078c1bc016d74de6ea83ca1fc5acd7b
       const faviconURL = `http://www.google.com/s2/favicons?domain=${originUrl}`;
       setFaviconUrl(faviconURL);
       console.log(faviconURL);
