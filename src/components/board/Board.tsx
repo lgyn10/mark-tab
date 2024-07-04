@@ -12,7 +12,7 @@ const Board = ({ boardTitle, boardId }: TBoardProps) => {
   const { bookmarkNode } = bookmarkStore();
   const board = bookmarkNode?.children!.find((node) => node.id === boardId)?.children!;
   return (
-    <Card borderRadius='8px' bg='#dddddd'>
+    <StyledCard borderRadius='8px' bg='#dddddd'>
       <StyledCardHeader>
         <Heading size='xm' textAlign='center'>
           {boardTitle}
@@ -20,14 +20,18 @@ const Board = ({ boardTitle, boardId }: TBoardProps) => {
       </StyledCardHeader>
       <StyledList>
         {board.map((node) => (
-          <Item itemTitle={node.title} key={node.id} />
+          <Item key={node.id} itemTitle={node.title} itemUrl={node.url!} />
         ))}
       </StyledList>
-    </Card>
+    </StyledCard>
   );
 };
 
 export default Board;
+
+const StyledCard = styled(Card)`
+  height: max-content;
+`;
 
 const StyledCardHeader = styled(CardHeader)`
   &&& {
