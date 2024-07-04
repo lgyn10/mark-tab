@@ -20,11 +20,12 @@ const Test = () => {
 
   // 북마크바 데이터 트리 조회
   const handleGetSubTreeAPI = async (id: string) => {
-    let result;
-    await chrome.bookmarks.getSubTree(id).then((res) => {
-      result = res;
-    });
-    console.log(result);
+    try {
+      const result = await chrome.bookmarks.getSubTree(id);
+      console.log(result);
+    } catch (err) {
+      console.log('error', err);
+    }
   };
 
   const handleGetAPI = (id: string) => {
