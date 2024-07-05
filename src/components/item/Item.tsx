@@ -1,7 +1,5 @@
-import { EditIcon, InfoOutlineIcon } from '@chakra-ui/icons';
-import { Box, Button, ListIcon, ListItem } from '@chakra-ui/react';
-// import axios from 'axios';
-// import cheerio from 'cheerio';
+import { EditIcon } from '@chakra-ui/icons';
+import { Box, Button, ListItem } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -12,24 +10,17 @@ type TItemProps = {
 
 const Item = ({ itemTitle, itemUrl }: TItemProps) => {
   const [faviconUrl, setFaviconUrl] = useState('');
-
   useEffect(() => {
-    try {
-      const originUrl = new URL(itemUrl).host;
-      const faviconURL = `http://www.google.com/s2/favicons?domain=${originUrl}`;
-      setFaviconUrl(faviconURL);
-      console.log(faviconURL);
-    } catch (err) {
-      // 일로 안넘어옴
-      console.log(err);
-      setFaviconUrl('');
-    }
+    const hostUrl = new URL(itemUrl).host;
+    const faviconURL = `https://api.faviconkit.com/${hostUrl}`;
+    // const faviconURL = `https://www.google.com/s2/favicons?domain=${hostUrl}&sz=${256}`;
+    setFaviconUrl(faviconURL);
   }, []);
 
   return (
     <StyledListItem>
       <StyledTitleBox>
-        {faviconUrl !== '' ? <StyledImg src={faviconUrl} /> : <ListIcon as={InfoOutlineIcon} />}
+        <StyledImg src={faviconUrl} />
         <StyledTitle>
           <StyledA href={itemUrl}>{itemTitle}</StyledA>
         </StyledTitle>
@@ -101,5 +92,10 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledImg = styled.img`
+  width: 16px;
+  height: 16px;
+  margin-right: 0.5rem;
   background-color: transparent;
+  -webkit-user-drag: none;
+  -moz-window-dragging: no-drag;
 `;

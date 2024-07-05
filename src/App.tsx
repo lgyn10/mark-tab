@@ -1,16 +1,17 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import './App.css';
-import Test from './Test';
-import TestFavicon from './TestFavicon';
+import BoardContainer from './components/boardContainer/BoardContainer';
 import Header from './components/header/Header';
+import Test from './Test';
 
 function App() {
   return (
     <ChakraProvider>
       <Header />
-      {/* <BoardContainer /> */}
+      <BoardContainer />
       <Test />
-      <TestFavicon />
+      {/* <TestFavicon /> */}
+      {/* <TestFavicon2 /> */}
     </ChakraProvider>
   );
 }

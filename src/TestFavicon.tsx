@@ -39,7 +39,7 @@ const TestFavicon = () => {
           favicon = originUrl + favicon;
           setFaviconUrl(favicon);
         } else {
-          console.log('cannot find favicon');
+          setFaviconUrl(favicon);
         }
       }
     } catch (e) {
