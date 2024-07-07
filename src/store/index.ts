@@ -16,7 +16,7 @@ export const bookmarkStore = create<BookmarkState>((set) => ({
       set({ bookmarkNode: defaultData });
     }
   },
-  editBookmarkTitle: async (id: string, editTitle: string) => {
+  editBookmarkNodeTitle: async (id: string, editTitle: string) => {
     try {
       chrome.bookmarks.update(id, { title: editTitle });
     } catch (e) {

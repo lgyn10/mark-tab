@@ -34,7 +34,7 @@ const ItemEditModal = ({
   itemId,
 }: TItemEditModalProps) => {
   const { editBookmarkTitle } = bookmarkStore((state) => ({
-    editBookmarkTitle: state.editBookmarkTitle,
+    editBookmarkTitle: state.editBookmarkNodeTitle,
   }));
 
   const editItemTitle = (id: string, editTitle: string) => {
