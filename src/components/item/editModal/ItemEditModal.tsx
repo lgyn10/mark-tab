@@ -12,6 +12,7 @@ import {
   ModalOverlay,
 } from '@chakra-ui/react';
 import React, { ChangeEvent } from 'react';
+import { bookmarkStore } from '../../../store';
 
 type TItemEditModalProps = {
   isOpen: boolean;
@@ -23,7 +24,24 @@ type TItemEditModalProps = {
   handleEditTitle: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-const ItemEditModal = ({ isOpen, onClose, initialRef, itemTitle, editTitle, handleEditTitle }: TItemEditModalProps) => {
+const ItemEditModal = ({
+  isOpen,
+  onClose,
+  initialRef,
+  itemTitle,
+  editTitle,
+  handleEditTitle,
+  itemId,
+}: TItemEditModalProps) => {
+  const { editBookmarkTitle } = bookmarkStore((state) => ({
+    editBookmarkTitle: state.editBookmarkTitle,
+  }));
+
+  const editItemTitle = (id: string, editTitle: string) => {
+    console.log(editTitle);
+    editBookmarkTitle(id, editTitle);
+    onClose();
+  };
   return (
     <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -33,11 +51,16 @@ const ItemEditModal = ({ isOpen, onClose, initialRef, itemTitle, editTitle, hand
         <ModalBody pb={6}>
           <FormControl>
             <FormLabel>북마크 이름</FormLabel>
-            <Input ref={initialRef} placeholder={itemTitle} value={editTitle} onChange={handleEditTitle} />
+            <Input
+              ref={initialRef}
+              placeholder={itemTitle}
+              value={editTitle}
+              onChange={handleEditTitle}
+            />
           </FormControl>
         </ModalBody>
         <ModalFooter>
-          <Button colorScheme='blue' mr={3}>
+          <Button colorScheme='blue' mr={3} onClick={() => editItemTitle(itemId, editTitle)}>
             저장
           </Button>
           <Button colorScheme='red' onClick={onClose}>
