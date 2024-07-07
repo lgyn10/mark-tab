@@ -1,10 +1,14 @@
 import { Container, SimpleGrid } from '@chakra-ui/react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { bookmarkStore } from '../../store';
 import Board from '../board/Board';
 
 const BoardContainer = () => {
   const { bookmarkNode } = bookmarkStore();
+
+  useEffect(() => {}, [bookmarkNode]);
+
   return (
     <StyledContainer bg='white'>
       <StyledSimpleGrid columns={{ base: 2, md: 3, lg: 3 }} spacing={3}>
