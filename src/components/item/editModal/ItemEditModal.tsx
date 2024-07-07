@@ -33,8 +33,9 @@ const ItemEditModal = ({
   handleEditTitle,
   itemId,
 }: TItemEditModalProps) => {
-  const { editBookmarkTitle } = bookmarkStore((state) => ({
+  const { editBookmarkTitle, deleteBookmarkNode } = bookmarkStore((state) => ({
     editBookmarkTitle: state.editBookmarkNodeTitle,
+    deleteBookmarkNode: state.deleteBookmarkNode,
   }));
 
   const editItemTitle = (id: string, editTitle: string) => {
@@ -47,6 +48,10 @@ const ItemEditModal = ({
       editBookmarkTitle(id, editTitle);
       onClose();
     }
+  };
+  const deleteItem = (id: string) => {
+    deleteBookmarkNode(id);
+    onClose();
   };
   return (
     <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
@@ -70,7 +75,7 @@ const ItemEditModal = ({
           <Button colorScheme='blue' mr={3} onClick={() => editItemTitle(itemId, editTitle)}>
             저장
           </Button>
-          <Button colorScheme='red' onClick={onClose}>
+          <Button colorScheme='red' onClick={() => deleteItem(itemId)}>
             삭제
           </Button>
         </ModalFooter>

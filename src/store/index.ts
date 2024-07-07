@@ -18,7 +18,18 @@ export const bookmarkStore = create<BookmarkState>((set) => ({
   },
   editBookmarkNodeTitle: async (id: string, editTitle: string) => {
     try {
-      chrome.bookmarks.update(id, { title: editTitle });
+      await chrome.bookmarks.update(id, { title: editTitle });
+      const result = await chrome.bookmarks.getSubTree('2');
+      set({ bookmarkNode: result[0] });
+    } catch (e) {
+      console.log(e);
+    }
+  },
+  deleteBookmarkNode: async (id: string) => {
+    try {
+      chrome.bookmarks.remove(id);
+      const result = await chrome.bookmarks.getSubTree('2');
+      set({ bookmarkNode: result[0] });
     } catch (e) {
       console.log(e);
     }

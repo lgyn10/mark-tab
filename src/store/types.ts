@@ -15,6 +15,7 @@ export interface BookmarkState {
   bookmarkNode: BookmarkTreeNode | null;
   fetchBookmarkTreeNode: () => void;
   editBookmarkNodeTitle: (id: string, editTitle: string) => void;
+  deleteBookmarkNode: (id: string) => void;
 }
 
 export interface CreateDetails {
