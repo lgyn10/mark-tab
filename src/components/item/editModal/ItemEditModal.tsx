@@ -42,6 +42,12 @@ const ItemEditModal = ({
     editBookmarkTitle(id, editTitle);
     onClose();
   };
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>, id: string, editTitle: string) => {
+    if (event.key === 'Enter') {
+      editBookmarkTitle(id, editTitle);
+      onClose();
+    }
+  };
   return (
     <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -56,6 +62,7 @@ const ItemEditModal = ({
               placeholder={itemTitle}
               value={editTitle}
               onChange={handleEditTitle}
+              onKeyDown={(event) => handleKeyPress(event, itemId, editTitle)}
             />
           </FormControl>
         </ModalBody>
