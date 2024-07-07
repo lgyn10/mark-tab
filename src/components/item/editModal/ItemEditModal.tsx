@@ -1,0 +1,52 @@
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+} from '@chakra-ui/react';
+import React, { ChangeEvent } from 'react';
+
+type TItemEditModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  initialRef: React.RefObject<HTMLInputElement>;
+  itemId: string;
+  itemTitle: string;
+  editTitle: string;
+  handleEditTitle: (e: ChangeEvent<HTMLInputElement>) => void;
+};
+
+const ItemEditModal = ({ isOpen, onClose, initialRef, itemTitle, editTitle, handleEditTitle }: TItemEditModalProps) => {
+  return (
+    <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>북마크 수정</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody pb={6}>
+          <FormControl>
+            <FormLabel>북마크 이름</FormLabel>
+            <Input ref={initialRef} placeholder={itemTitle} value={editTitle} onChange={handleEditTitle} />
+          </FormControl>
+        </ModalBody>
+        <ModalFooter>
+          <Button colorScheme='blue' mr={3}>
+            저장
+          </Button>
+          <Button colorScheme='red' onClick={onClose}>
+            삭제
+          </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  );
+};
+
+export default ItemEditModal;

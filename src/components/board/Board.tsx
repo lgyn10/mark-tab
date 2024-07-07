@@ -20,7 +20,7 @@ const Board = ({ boardTitle, boardId }: TBoardProps) => {
       </StyledCardHeader>
       <StyledList>
         {board.map((node) => (
-          <Item key={node.id} itemTitle={node.title} itemUrl={node.url!} />
+          <Item key={node.id} itemTitle={node.title} itemUrl={node.url!} itemId={node.id} />
         ))}
       </StyledList>
     </StyledCard>

@@ -1,33 +1,51 @@
-import { EditIcon } from '@chakra-ui/icons';
-import { Box, Button, ListItem } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { Box, ListItem, useDisclosure } from '@chakra-ui/react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import ItemEditModal from './editModal/ItemEditModal';
 
 type TItemProps = {
   itemTitle: string;
   itemUrl: string;
+  itemId: string;
 };
 
-const Item = ({ itemTitle, itemUrl }: TItemProps) => {
+const Item = ({ itemTitle, itemUrl, itemId }: TItemProps) => {
   const [faviconUrl, setFaviconUrl] = useState('');
+  const [editTitle, setEditTitle] = useState(itemTitle);
+
   useEffect(() => {
     const hostUrl = new URL(itemUrl).host;
     const faviconURL = `https://api.faviconkit.com/${hostUrl}`;
-    // const faviconURL = `https://www.google.com/s2/favicons?domain=${hostUrl}&sz=${256}`;
     setFaviconUrl(faviconURL);
   }, []);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const initialRef = React.useRef(null);
+
+  const handleEditTitle = (e: ChangeEvent<HTMLInputElement>) => {
+    setEditTitle(e.target.value);
+  };
 
   return (
     <StyledListItem>
       <StyledTitleBox>
         <StyledImg src={faviconUrl} />
-        <StyledTitle>
-          <StyledA href={itemUrl}>{itemTitle}</StyledA>
-        </StyledTitle>
+        <StyledA href={itemUrl}>
+          <StyledTitle>{itemTitle}</StyledTitle>
+        </StyledA>
       </StyledTitleBox>
-      <StyledButtonBox>
-        <StyledButton as={EditIcon}>...</StyledButton>
+      <StyledButtonBox onClick={onOpen}>
+        <StyledImg src='/dots.png' />
       </StyledButtonBox>
+      <ItemEditModal
+        isOpen={isOpen}
+        onClose={onClose}
+        initialRef={initialRef}
+        itemId={itemId}
+        itemTitle={itemTitle}
+        editTitle={editTitle}
+        handleEditTitle={handleEditTitle}
+      />
     </StyledListItem>
   );
 };
@@ -41,61 +59,65 @@ const StyledListItem = styled(ListItem)`
     justify-content: space-between;
     padding-inline: 0.5rem;
     width: 100%;
+    margin-bottom: 3px;
   }
 `;
 
 const StyledTitleBox = styled(Box)`
   &&& {
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
-    cursor: pointer; /* 마우스 커서 변경 */
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  :hover {
-    color: red; /* 호버 시 텍스트 색상 변경 */
+`;
+
+const StyledTitle = styled.div`
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #d6ffd6;
+`;
+
+const StyledA = styled.a`
+  &&& {
+    margin-left: 3px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    :hover {
+      cursor: pointer;
+      color: red;
+      font-weight: bold;
+    }
   }
 `;
 
 const StyledButtonBox = styled(Box)`
   &&& {
-    text-align: right;
     display: flex;
     align-items: center;
-  }
-`;
-
-const StyledA = styled.a`
-  width: 100%;
-  color: inherit; /* 부모 요소의 색상 상속 */
-`;
-
-const StyledTitle = styled.div`
-  &&& {
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    border-radius: 3px;
+    margin-left: 5px;
+    transition: all 150ms;
   }
   :hover {
-    color: red;
-  }
-`;
-
-const StyledButton = styled(Button)`
-  &&& {
-    height: max-content;
-    margin: 0;
-  }
-  :hover {
-    color: red;
+    cursor: pointer;
+    background-color: green;
+    transition: all 150ms;
   }
 `;
 
 const StyledImg = styled.img`
   width: 16px;
   height: 16px;
-  margin-right: 0.5rem;
+  margin-inline: 0px;
+  border-radius: 3px;
   background-color: transparent;
   -webkit-user-drag: none;
   -moz-window-dragging: no-drag;
+  transition: all 150ms;
 `;
