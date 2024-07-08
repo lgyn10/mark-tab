@@ -97,9 +97,10 @@ const StyledA = styled.a`
     :hover {
       cursor: pointer;
       color: black;
-      font-weight: bold;
+      /* font-weight: bold; */
+      text-shadow: 0 0 1px #737373;
       transition: 150ms;
-      font-size: 14.5px;
+      /* font-size: 14.5px; */
     }
   }
 `;
