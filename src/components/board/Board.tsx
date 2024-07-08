@@ -51,7 +51,10 @@ const StyledList = styled(List)`
 
 const StyledHeading = styled(Heading)`
   &&& {
-    font-size: 17px;
+    color: #353535;
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eaebef;
   }
-  border-bottom: 1px solid #eaebef;
 `;
