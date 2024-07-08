@@ -11,6 +11,9 @@ const BoardContainer = () => {
   useEffect(() => {
     fetchBookmarkTreeNode();
     console.log('fetchBookmarkTreeNode activated');
+  }, []);
+  useEffect(() => {
+    console.log('rerendering');
   }, [bookmarkNode]);
 
   return (
