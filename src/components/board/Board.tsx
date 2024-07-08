@@ -34,6 +34,8 @@ const StyledCard = styled(Card)`
     height: max-content;
     border-radius: 8px;
     background-color: #dcedff;
+    width: 30vw;
+    min-width: 280px;
   }
 `;
 
