@@ -39,14 +39,14 @@ export default BoardContainer;
 
 const StyledContainer = styled(Container)`
   padding: 0.8rem !important;
-  margin-top: 2vh;
   height: max-content;
   max-width: calc(90vw + 55.6px) !important;
   min-width: 40rem;
   border-radius: 1rem;
-  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  border: 1.5px solid #e2e1ea;
   display: flex;
   justify-content: space-around;
+  margin-bottom: 3vh;
 `;
 
 const StyledMasonryGrid = styled(MasonryGrid)`

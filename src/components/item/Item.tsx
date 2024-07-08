@@ -79,7 +79,6 @@ const StyledTitle = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  background-color: #d6ffd6;
   font-size: 14px;
   font-weight: 400;
   transition: 150ms;
@@ -92,13 +91,13 @@ const StyledA = styled.a`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #737373;
+    color: #898989;
     padding-block: 1.5px;
     :hover {
       cursor: pointer;
-      color: black;
+      color: #1077eb;
       /* font-weight: bold; */
-      text-shadow: 0 0 1px #737373;
+      text-shadow: 0 0 1px #2c8af6;
       transition: 150ms;
       /* font-size: 14.5px; */
     }
@@ -125,7 +124,7 @@ const StyledButtonBox = styled(Box)`
   }
   :hover {
     cursor: pointer;
-    background-color: green;
+    background-color: #cce5f8;
     transition: all 150ms;
   }
 `;
@@ -135,9 +134,10 @@ const StyledImgDot = styled.img`
   height: 20px;
   padding: 2px;
   margin-inline: 0px;
-  border-radius: 2px;
+  border-radius: 5px;
   background-color: transparent;
   -webkit-user-drag: none;
   -moz-window-dragging: no-drag;
   transition: all 150ms;
+  opacity: 0.6;
 `;

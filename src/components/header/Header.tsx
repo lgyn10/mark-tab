@@ -16,7 +16,6 @@ export default Header;
 
 const StyledCenter = styled(Center)`
   min-height: 3rem;
-  background-color: #bee3f8;
   height: 10vh;
 `;
 
