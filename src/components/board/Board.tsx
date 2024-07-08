@@ -10,7 +10,7 @@ type TBoardProps = {
 
 const Board = ({ boardTitle, boardId }: TBoardProps) => {
   const { bookmarkNode } = bookmarkStore();
-  const board = bookmarkNode?.children!.find((node) => node.id === boardId)?.children!;
+  const items = bookmarkNode?.children!.find((node) => node.id === boardId)?.children;
   return (
     <StyledCard>
       <StyledCardHeader>
@@ -19,9 +19,8 @@ const Board = ({ boardTitle, boardId }: TBoardProps) => {
         </Heading>
       </StyledCardHeader>
       <StyledList>
-        {board.map((node) => (
-          <Item key={node.id} itemTitle={node.title} itemUrl={node.url!} itemId={node.id} />
-        ))}
+        {items &&
+          items.map((node) => <Item key={node.id} itemTitle={node.title} itemUrl={node.url!} itemId={node.id} />)}
       </StyledList>
     </StyledCard>
   );
