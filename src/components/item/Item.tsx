@@ -35,7 +35,7 @@ const Item = ({ itemTitle, itemUrl, itemId }: TItemProps) => {
         </StyledA>
       </StyledTitleBox>
       <StyledButtonBox onClick={onOpen}>
-        <StyledImg src='/dots.png' />
+        <StyledImgDot src='/dots.png' />
       </StyledButtonBox>
       <ItemEditModal
         isOpen={isOpen}
@@ -59,7 +59,8 @@ const StyledListItem = styled(ListItem)`
     justify-content: space-between;
     padding-inline: 0.5rem;
     width: 100%;
-    margin-bottom: 3px;
+    /* margin-bottom: 3px; */
+    /* padding-block: 1.5px; */
   }
 `;
 
@@ -79,6 +80,9 @@ const StyledTitle = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   background-color: #d6ffd6;
+  font-size: 14px;
+  font-weight: 400;
+  transition: 150ms;
 `;
 
 const StyledA = styled.a`
@@ -88,12 +92,26 @@ const StyledA = styled.a`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #737373;
+    padding-block: 1.5px;
     :hover {
       cursor: pointer;
-      color: red;
+      color: black;
       font-weight: bold;
+      transition: 150ms;
+      font-size: 14.5px;
     }
   }
+`;
+
+const StyledImg = styled.img`
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  background-color: transparent;
+  -webkit-user-drag: none;
+  -moz-window-dragging: no-drag;
+  opacity: 0.9;
 `;
 
 const StyledButtonBox = styled(Box)`
@@ -111,11 +129,12 @@ const StyledButtonBox = styled(Box)`
   }
 `;
 
-const StyledImg = styled.img`
-  width: 16px;
-  height: 16px;
+const StyledImgDot = styled.img`
+  width: 20px;
+  height: 20px;
+  padding: 2px;
   margin-inline: 0px;
-  border-radius: 3px;
+  border-radius: 2px;
   background-color: transparent;
   -webkit-user-drag: none;
   -moz-window-dragging: no-drag;
