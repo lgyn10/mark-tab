@@ -4,6 +4,9 @@ import BoardContainer from './components/boardContainer/BoardContainer';
 import Header from './components/header/Header';
 import Test from './Test';
 
+// @ts-ignore
+import TestMasonry from './TestMasonry';
+
 function App() {
   return (
     <ChakraProvider>
@@ -12,6 +15,7 @@ function App() {
       <Test />
       {/* <TestFavicon /> */}
       {/* <TestFavicon2 /> */}
+      <TestMasonry />
     </ChakraProvider>
   );
 }
