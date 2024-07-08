@@ -14,10 +14,9 @@ const Board = ({ boardTitle, boardId }: TBoardProps) => {
   return (
     <StyledCard>
       <StyledCardHeader>
-        <Heading size='xm' textAlign='center'>
-          {boardTitle}
-        </Heading>
+        <StyledHeading textAlign='center'>{boardTitle}</StyledHeading>
       </StyledCardHeader>
+
       <StyledList>
         {board.map((node) => (
           <Item key={node.id} itemTitle={node.title} itemUrl={node.url!} itemId={node.id} />
@@ -33,9 +32,10 @@ const StyledCard = styled(Card)`
   &&& {
     height: max-content;
     border-radius: 8px;
-    background-color: #dcedff;
+    border: 1px solid #c9cacf;
     width: 30vw;
     min-width: 280px;
+    background-color: transparent;
   }
 `;
 
@@ -47,4 +47,11 @@ const StyledCardHeader = styled(CardHeader)`
 
 const StyledList = styled(List)`
   margin-bottom: 0.5rem;
+`;
+
+const StyledHeading = styled(Heading)`
+  &&& {
+    font-size: 17px;
+  }
+  border-bottom: 1px solid #eaebef;
 `;
