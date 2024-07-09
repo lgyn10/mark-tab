@@ -14,17 +14,17 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  mainBackgroundColor: '#374',
-  containerBorderColor: 'red',
-  containerBackgroundColor: '#573',
-  boardCardBackgroundColor: `grey`,
-  boardCardBorderColor: 'red',
-  boardCardDividerColor: 'red',
-  boardHeadingColor: '#837',
-  itemTextColor: 'pink',
-  itemHoverTextColor: '#fa1223',
-  itemHoverTextShadow: '#fc8ff6',
-  buttonBoxBackgroundColor: 'red',
+  mainBackgroundColor: '#23272A',
+  containerBorderColor: '#514C48',
+  containerBackgroundColor: '#1C2023',
+  boardCardBackgroundColor: `#23272A`,
+  boardCardBorderColor: '#514C48',
+  boardCardDividerColor: '#514C48',
+  boardHeadingColor: '#D2D2D2',
+  itemTextColor: '#898989',
+  itemHoverTextColor: '#F37226',
+  itemHoverTextShadow: '#F69331',
+  buttonBoxBackgroundColor: '#076DD0',
   itemButtonFilterValue: 1,
 };
 
