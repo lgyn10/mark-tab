@@ -28,14 +28,14 @@ const Board = ({ boardTitle, boardId }: TBoardProps) => {
 
 export default Board;
 
-const StyledCard = styled(Card)`
+const StyledCard = styled(Card)<{ boardCardBorderColor: string; boardCardBackgroundColor: string }>`
   &&& {
     height: max-content;
     border-radius: 8px;
-    border: 1px solid #c9cacf;
+    border: 1px solid ${(props) => props.theme.boardCardBorderColor};
     width: 30vw;
     min-width: 280px;
-    background-color: transparent;
+    background-color: ${(props) => props.theme.boardCardBackgroundColor};
   }
 `;
 
@@ -49,12 +49,12 @@ const StyledList = styled(List)`
   margin-bottom: 0.5rem;
 `;
 
-const StyledHeading = styled(Heading)`
+const StyledHeading = styled(Heading)<{ boardCardDividerColor: string; boardHeadingColor: string }>`
   &&& {
-    color: #353535;
+    color: ${(props) => props.theme.boardHeadingColor};
     font-size: 18px;
     font-weight: bold;
     padding-bottom: 5px;
-    border-bottom: 1px solid #eaebef;
+    border-bottom: 1px solid ${(props) => props.theme.boardCardDividerColor};
   }
 `;

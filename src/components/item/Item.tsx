@@ -59,8 +59,6 @@ const StyledListItem = styled(ListItem)`
     justify-content: space-between;
     padding-inline: 0.5rem;
     width: 100%;
-    /* margin-bottom: 3px; */
-    /* padding-block: 1.5px; */
   }
 `;
 
@@ -84,20 +82,20 @@ const StyledTitle = styled.div`
   transition: 150ms;
 `;
 
-const StyledA = styled.a`
+const StyledA = styled.a<{ itemTextColor: string; itemHoverTextColor: string; itemHoverTextShadow: string }>`
   &&& {
     margin-left: 3px;
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #898989;
+    color: ${(props) => props.theme.itemTextColor};
     padding-block: 1.5px;
     :hover {
       cursor: pointer;
-      color: #1077eb;
+      color: ${(props) => props.theme.itemHoverTextColor};
       /* font-weight: bold; */
-      text-shadow: 0 0 1px #2c8af6;
+      text-shadow: 0 0 1px ${(props) => props.theme.itemHoverTextShadow};
       transition: 150ms;
       /* font-size: 14.5px; */
     }
@@ -114,7 +112,7 @@ const StyledImg = styled.img`
   opacity: 0.9;
 `;
 
-const StyledButtonBox = styled(Box)`
+const StyledButtonBox = styled(Box)<{ buttonBoxBackgroundColor: string }>`
   &&& {
     display: flex;
     align-items: center;
@@ -124,12 +122,12 @@ const StyledButtonBox = styled(Box)`
   }
   :hover {
     cursor: pointer;
-    background-color: #cce5f8;
+    background-color: ${(props) => props.theme.buttonBoxBackgroundColor};
     transition: all 150ms;
   }
 `;
 
-const StyledImgDot = styled.img`
+const StyledImgDot = styled.img<{ itemButtonFilterValue: number }>`
   width: 20px;
   height: 20px;
   padding: 2px;
@@ -140,4 +138,5 @@ const StyledImgDot = styled.img`
   -moz-window-dragging: no-drag;
   transition: all 150ms;
   opacity: 0.6;
+  filter: invert(${(props) => props.theme.itemButtonFilterValue});
 `;

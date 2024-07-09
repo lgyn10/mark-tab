@@ -37,16 +37,16 @@ const BoardContainer = () => {
 
 export default BoardContainer;
 
-const StyledContainer = styled(Container)`
+const StyledContainer = styled(Container)<{ containerBorderColor: string; containerBackgroundColor: string }>`
   padding: 0.8rem !important;
   height: max-content;
   max-width: calc(90vw + 55.6px) !important;
   min-width: 40rem;
   border-radius: 1rem;
-  border: 1.5px solid #e2e1ea;
+  border: 1.5px solid ${(props) => props.theme.containerBorderColor};
   display: flex;
   justify-content: space-around;
-  margin-bottom: 3vh;
+  background-color: ${(props) => props.theme.containerBackgroundColor} !important;
 `;
 
 const StyledMasonryGrid = styled(MasonryGrid)`
