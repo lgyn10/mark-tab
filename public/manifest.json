@@ -12,7 +12,7 @@
     "service_worker": "background.js"
   },
 
-  "permissions": ["bookmarks"],
+  "permissions": ["bookmarks", "localStorage"],
 
   "chrome_url_overrides": {
     "newtab": "index.html"
