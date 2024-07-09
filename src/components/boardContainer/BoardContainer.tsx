@@ -43,10 +43,11 @@ const StyledContainer = styled(Container)<{ containerBorderColor: string; contai
   max-width: calc(90vw + 55.6px) !important;
   min-width: 40rem;
   border-radius: 1rem;
-  border: 1.5px solid ${(props) => props.theme.containerBorderColor};
   display: flex;
   justify-content: space-around;
-  background-color: ${(props) => props.theme.containerBackgroundColor} !important;
+  // border: 1.5px solid ${(props) => props.theme.containerBorderColor};
+  // background-color: ${(props) => props.theme.containerBackgroundColor} !important;
+  background-color: transparent !important;
 `;
 
 const StyledMasonryGrid = styled(MasonryGrid)`
