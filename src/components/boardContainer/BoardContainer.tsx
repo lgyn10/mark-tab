@@ -7,11 +7,13 @@ import Board from '../board/Board';
 
 const BoardContainer = () => {
   const { bookmarkNode, fetchBookmarkTreeNode } = bookmarkStore();
+  const boards = bookmarkNode?.children;
 
   useEffect(() => {
     fetchBookmarkTreeNode();
     console.log('fetchBookmarkTreeNode activated');
   }, []);
+
   useEffect(() => {
     console.log('rerendering');
   }, [bookmarkNode]);
@@ -27,9 +29,7 @@ const BoardContainer = () => {
         columnSize={0}
         columnSizeRatio={0}
       >
-        {bookmarkNode?.children!.map(({ id, title }) => (
-          <Board boardTitle={title} boardId={id} key={id} />
-        ))}
+        {boards && boards.map(({ id, title }) => <Board boardTitle={title} boardId={id} key={id} />)}
       </StyledMasonryGrid>
     </StyledContainer>
   );
