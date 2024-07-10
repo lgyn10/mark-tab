@@ -12,7 +12,7 @@ import {
   ModalOverlay,
 } from '@chakra-ui/react';
 import React, { ChangeEvent } from 'react';
-import { bookmarkStore } from '../../../store';
+import { bookmarkStore } from '../../../store/bookmarkStore';
 
 type TItemEditModalProps = {
   isOpen: boolean;

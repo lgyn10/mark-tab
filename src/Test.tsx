@@ -1,7 +1,7 @@
 import { Card } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { bookmarkStore } from './store';
+import { bookmarkStore } from './store/bookmarkStore';
 
 const Test = () => {
   const [stateSample] = useState('dd');

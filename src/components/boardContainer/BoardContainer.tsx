@@ -2,7 +2,7 @@ import { Container } from '@chakra-ui/react';
 import { MasonryGrid } from '@egjs/react-grid';
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import { bookmarkStore } from '../../store';
+import { bookmarkStore } from '../../store/bookmarkStore';
 import Board from '../board/Board';
 
 const BoardContainer = () => {

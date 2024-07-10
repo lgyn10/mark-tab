@@ -1,6 +1,6 @@
 import { Card, CardHeader, Heading, List } from '@chakra-ui/react';
 import styled from 'styled-components';
-import { bookmarkStore } from '../../store';
+import { bookmarkStore } from '../../store/bookmarkStore';
 import Item from '../item/Item';
 
 type TBoardProps = {
