@@ -16,7 +16,6 @@ const Board = ({ boardTitle, boardId }: TBoardProps) => {
       <StyledCardHeader>
         <StyledHeading textAlign='center'>{boardTitle}</StyledHeading>
       </StyledCardHeader>
-
       <StyledList>
         {items &&
           items.map((node) => <Item key={node.id} itemTitle={node.title} itemUrl={node.url!} itemId={node.id} />)}

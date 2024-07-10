@@ -7,11 +7,18 @@ export const bookmarkStore = create<BookmarkState>((set) => ({
   bookmarkNode: null,
   fetchBookmarkTreeNode: async () => {
     try {
-      const result = await chrome.bookmarks.getSubTree('2');
+      const markTabId = await chrome.bookmarks.search({ title: 'mark-tab' }).then((res) => {
+        return res[0].id;
+      });
+      const result = await chrome.bookmarks.getSubTree(markTabId);
       console.log('크롬에서 북마크 데이터를 가져옵니다.');
       set({ bookmarkNode: result[0] });
     } catch (error) {
       console.log('error', error);
+      alert(
+        'Cannot find the ‘mark-tab’ folder in the bookmarks bar.\nCreate a ‘mark-tab’ folder in the bookmarks bar.'
+      );
+      //! dev
       console.log('로컬에서 북마크 데이터를 가져옵니다.');
       set({ bookmarkNode: defaultData });
     }
@@ -19,7 +26,10 @@ export const bookmarkStore = create<BookmarkState>((set) => ({
   editBookmarkNodeTitle: async (id: string, editTitle: string) => {
     try {
       await chrome.bookmarks.update(id, { title: editTitle });
-      const result = await chrome.bookmarks.getSubTree('2');
+      const markTabId = await chrome.bookmarks.search({ title: 'mark-tab' }).then((res) => {
+        return res[0].id;
+      });
+      const result = await chrome.bookmarks.getSubTree(markTabId);
       set({ bookmarkNode: result[0] });
     } catch (e) {
       console.log(e);
@@ -28,7 +38,10 @@ export const bookmarkStore = create<BookmarkState>((set) => ({
   deleteBookmarkNode: async (id: string) => {
     try {
       chrome.bookmarks.remove(id);
-      const result = await chrome.bookmarks.getSubTree('2');
+      const markTabId = await chrome.bookmarks.search({ title: 'mark-tab' }).then((res) => {
+        return res[0].id;
+      });
+      const result = await chrome.bookmarks.getSubTree(markTabId);
       set({ bookmarkNode: result[0] });
     } catch (e) {
       console.log(e);

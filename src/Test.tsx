@@ -1,16 +1,11 @@
 import { Card } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { bookmarkStore } from './store/bookmarkStore';
 
 const Test = () => {
   const [stateSample] = useState('dd');
   const { bookmarkNode, fetchBookmarkTreeNode } = bookmarkStore();
-
-  useEffect(() => {
-    fetchBookmarkTreeNode();
-    console.log('useEffect activated');
-  }, []);
 
   const handleGetTreeAPI = () => {
     chrome.bookmarks.getTree().then((res) => {
@@ -41,6 +36,20 @@ const Test = () => {
 
   const handleZustandAPI = async () => {
     fetchBookmarkTreeNode();
+  };
+
+  const barmarktab = async () => {
+    try {
+      const markTabId = await chrome.bookmarks.search({ title: 'Mark-Tab' || 'mark-tab' }).then((res) => {
+        return res[0].id;
+      });
+      const result2 = await chrome.bookmarks.getChildren(markTabId).then((res) => res);
+      console.log(result2);
+    } catch (err) {
+      console.log('err: ', err);
+      alert('cannot find the ‘mark-tab’ folder in the bookmarks bar');
+      console.log('Cannot find the ‘mark-tab’ folder in the bookmarks bar.');
+    }
   };
 
   return (
@@ -77,6 +86,9 @@ const Test = () => {
         >
           zustand API 사용 콘솔 확인
         </button>
+      </div>
+      <div>
+        <button onClick={barmarktab}>북마크바 mark-tab 확인</button>
       </div>
     </StyledCard>
   );
