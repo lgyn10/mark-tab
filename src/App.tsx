@@ -8,7 +8,7 @@ import { useStyleStore } from './store/styleSore';
 import { darkTheme, lightTheme } from './theme/theme';
 
 function App() {
-  const { isDarkTheme, setStyles } = useStyleStore();
+  const { isDarkTheme } = useStyleStore();
 
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
