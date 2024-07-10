@@ -95,7 +95,7 @@ const StyledA = styled.a<{ itemTextColor: string; itemHoverTextColor: string; it
       cursor: pointer;
       color: ${(props) => props.theme.itemHoverTextColor};
       /* font-weight: bold; */
-      text-shadow: 0 0 1px ${(props) => props.theme.itemHoverTextShadow};
+      text-shadow: 0 0 1.5px ${(props) => props.theme.itemHoverTextShadow};
       transition: 150ms;
       /* font-size: 14.5px; */
     }
