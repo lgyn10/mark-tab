@@ -1,20 +1,18 @@
 import { Center, Image, Switch } from '@chakra-ui/react';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useStyleStore } from '../../store/styleSore';
-const Header = (props: { themeToggle: boolean; setThemeToggle: Dispatch<SetStateAction<boolean>> }) => {
-  const { setStyles } = useStyleStore();
-  // const [themeToggle, setThemeToggle] = useState(isDarkTheme);
+const Header = () => {
+  const { isDarkTheme, setStyles } = useStyleStore();
 
   const changeThemeToggle = async () => {
-    props.setThemeToggle((prev) => !prev);
-    setStyles(props.themeToggle);
+    setStyles(!isDarkTheme);
   };
 
   useEffect(() => {
-    window.localStorage.setItem('marktab-theme', String(props.themeToggle));
+    window.localStorage.setItem('marktab-theme', String(isDarkTheme));
     console.log('changeThemeToggle: ', window.localStorage.getItem('marktab-theme'));
-  }, [props.themeToggle]);
+  }, [isDarkTheme]);
 
   return (
     <>
@@ -23,7 +21,7 @@ const Header = (props: { themeToggle: boolean; setThemeToggle: Dispatch<SetState
           <StyledImage src='/google-logo.png' />
         </StyledA>
       </StyledCenter>
-      <StyledSwitch size='md' colorScheme='gray' onChange={changeThemeToggle} isChecked={props.themeToggle} />
+      <StyledSwitch size='md' colorScheme='gray' onChange={changeThemeToggle} isChecked={isDarkTheme} />
     </>
   );
 };
