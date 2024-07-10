@@ -21,7 +21,9 @@ const Header = () => {
           <StyledImage src='/google-logo.png' />
         </StyledA>
       </StyledCenter>
-      <StyledSwitch size='md' colorScheme='gray' onChange={changeThemeToggle} isChecked={isDarkTheme} />
+      <StyledDiv>
+        <StyledSwitch size='md' colorScheme='gray' onChange={changeThemeToggle} isChecked={isDarkTheme} />
+      </StyledDiv>
     </>
   );
 };
@@ -30,13 +32,13 @@ export default Header;
 
 const StyledCenter = styled(Center)`
   min-height: 3rem;
-  height: 10vh;
+  height: 5rem;
   background-color: transparent;
 `;
 
 const StyledImage = styled(Image)`
-  height: 10vh;
-  min-height: 5rem;
+  height: 5rem;
+  min-height: 3rem;
   -moz-window-dragging: no-drag;
   -webkit-user-drag: none;
   transition: all 0.2s;
@@ -47,8 +49,10 @@ const StyledA = styled.a`
     scale: 1.1;
   }
 `;
-
-const StyledSwitch = styled(Switch)`
-  top: -3rem;
-  left: 95vw;
+const StyledDiv = styled.div`
+  position: absolute;
+  text-align: right;
+  top: 2rem;
+  right: 3rem;
 `;
+const StyledSwitch = styled(Switch)``;
