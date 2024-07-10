@@ -12,6 +12,7 @@
   font-size: 14px;
 }
 
-/* body {
-  background-color: black;
-} */
+html,
+body {
+  background-color: #1c2128;
+}
