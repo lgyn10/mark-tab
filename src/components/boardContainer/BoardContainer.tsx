@@ -29,7 +29,12 @@ const BoardContainer = () => {
         columnSize={0}
         columnSizeRatio={0}
       >
-        {boards && boards.map(({ id, title }) => <Board boardTitle={title} boardId={id} key={id} />)}
+        {boards &&
+          boards.map((board) => {
+            if (board.children) {
+              return <Board boardTitle={board.title} boardId={board.id} key={board.id} />;
+            }
+          })}
       </StyledMasonryGrid>
     </StyledContainer>
   );
