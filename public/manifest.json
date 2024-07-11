@@ -2,17 +2,17 @@
   "manifest_version": 3,
   "name": "mark-tab",
   "description": "New Tab 활용하여 사용자의 웹 서핑 생산성을 높여주는 시작페이지 제공",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "action": {
     "default_icon": "mark-logo.png",
-    "default_title": "My Extension"
+    "default_title": "mark-tab"
   },
 
   "background": {
     "service_worker": "background.js"
   },
 
-  "permissions": ["bookmarks", "localStorage"],
+  "permissions": ["bookmarks"],
 
   "chrome_url_overrides": {
     "newtab": "index.html"

@@ -11,11 +11,11 @@ const BoardContainer = () => {
 
   useEffect(() => {
     fetchBookmarkTreeNode();
-    console.log('fetchBookmarkTreeNode activated');
+    // console.log('fetchBookmarkTreeNode activated');
   }, []);
 
   useEffect(() => {
-    console.log('rerendering');
+    // console.log('rerendering');
   }, [bookmarkNode]);
 
   return (

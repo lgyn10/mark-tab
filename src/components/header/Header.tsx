@@ -11,7 +11,7 @@ const Header = () => {
 
   useEffect(() => {
     window.localStorage.setItem('marktab-theme', String(isDarkTheme));
-    console.log('changeThemeToggle: ', window.localStorage.getItem('marktab-theme'));
+    // console.log('changeThemeToggle: ', window.localStorage.getItem('marktab-theme'));
   }, [isDarkTheme]);
 
   return (

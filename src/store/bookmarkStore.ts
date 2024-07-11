@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { defaultData } from './data';
+
 import { BookmarkState } from './types';
 
 // id = '2'인 기타 북마크 폴더만 가지고 crud 진행 예정
@@ -11,16 +11,13 @@ export const bookmarkStore = create<BookmarkState>((set) => ({
         return res[0].id;
       });
       const result = await chrome.bookmarks.getSubTree(markTabId);
-      console.log('크롬에서 북마크 데이터를 가져옵니다.');
+      // console.log('크롬에서 북마크 데이터를 가져옵니다.');
       set({ bookmarkNode: result[0] });
     } catch (error) {
       console.log('error', error);
       alert(
         'Cannot find the ‘mark-tab’ folder in the bookmarks bar.\nCreate a ‘mark-tab’ folder in the bookmarks bar.'
       );
-      //! dev
-      console.log('로컬에서 북마크 데이터를 가져옵니다.');
-      set({ bookmarkNode: defaultData });
     }
   },
   editBookmarkNodeTitle: async (id: string, editTitle: string) => {

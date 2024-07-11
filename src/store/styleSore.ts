@@ -8,7 +8,7 @@ interface StyleState {
 
 export const useStyleStore = create<StyleState>((set) => {
   const initialIsDarkTheme = window.localStorage.getItem('marktab-theme') === 'true' ? true : false;
-  console.log('useStyleStore: ', window.localStorage.getItem('marktab-theme'));
+  // console.log('useStyleStore: ', window.localStorage.getItem('marktab-theme'));
   return {
     isDarkTheme: initialIsDarkTheme,
     setStyles: (state: boolean) => {

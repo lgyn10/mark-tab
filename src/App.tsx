@@ -3,6 +3,7 @@ import './App.css';
 
 import styled, { ThemeProvider } from 'styled-components';
 import BoardContainer from './components/boardContainer/BoardContainer';
+import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import { useStyleStore } from './store/styleSore';
 import { darkTheme, lightTheme } from './theme/theme';
@@ -16,9 +17,7 @@ function App() {
         <ChakraProvider>
           <Header />
           <BoardContainer />
-          {/* <Test /> */}
-          {/* <TestFavicon /> */}
-          {/* <TestFavicon2 /> */}
+          <Footer />
         </ChakraProvider>
       </StyledContainer>
     </ThemeProvider>
