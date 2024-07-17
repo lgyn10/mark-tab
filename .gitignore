@@ -13,6 +13,7 @@ node_modules
 # 빌드 관련 
 dist
 dist-ssr
+dist.zip
 *.local
 
 # Editor directories and files
