@@ -1,4 +1,23 @@
-export const lightTheme = {
+export type ThemeName = 'light' | 'dark';
+
+export interface Theme {
+  name: ThemeName;
+  mainBackgroundColor: string;
+  containerBorderColor: string;
+  containerBackgroundColor: string;
+  boardCardBackgroundColor: string;
+  boardCardBorderColor: string;
+  boardCardDividerColor: string;
+  boardHeadingColor: string;
+  itemTextColor: string;
+  itemHoverTextColor: string;
+  itemHoverTextShadow: string;
+  buttonBoxBackgroundColor: string;
+  itemButtonFilterValue: number;
+}
+
+export const lightTheme: Theme = {
+  name: 'light',
   mainBackgroundColor: '#f7f8fb',
   containerBorderColor: '#e2e1ea',
   containerBackgroundColor: '#fff',
@@ -13,7 +32,8 @@ export const lightTheme = {
   itemButtonFilterValue: 0,
 };
 
-export const darkTheme = {
+export const darkTheme: Theme = {
+  name: 'dark',
   mainBackgroundColor: '#1C2128',
   containerBorderColor: '#514C48',
   containerBackgroundColor: '#1C2023',
