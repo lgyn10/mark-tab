@@ -1,19 +1,22 @@
-import { Center, Image, Switch } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { Center, Image, useDisclosure } from '@chakra-ui/react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useLaguageStore } from '../../store/laguageStore';
 import { useStyleStore } from '../../store/styleSore';
+import SettingModal from './SettingModal';
 const Header = () => {
-  const { isDarkTheme, setStyles } = useStyleStore();
-  const { lang, setLang } = useLaguageStore();
+  const { isDarkTheme } = useStyleStore();
+  const { lang } = useLaguageStore();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const initialRef = React.useRef(null);
 
-  const changeThemeToggle = async () => {
-    setStyles(!isDarkTheme);
-  };
+  // const changeThemeToggle = async () => {
+  //   setStyles(!isDarkTheme);
+  // };
 
-  const changeLangToggle = async () => {
-    setLang(lang === 'en' ? 'ko' : 'en');
-  };
+  // const changeLangToggle = async () => {
+  //   setLang(lang === 'en' ? 'ko' : 'en');
+  // };
 
   useEffect(() => {
     window.localStorage.setItem('marktab-theme', String(isDarkTheme));
@@ -32,14 +35,16 @@ const Header = () => {
         </StyledA>
       </StyledCenter>
       <StyledDiv>
-        <StyledSwitch size='md' colorScheme='gray' onChange={changeThemeToggle} isChecked={isDarkTheme} />
+        <Image src='/setting.png' onClick={onOpen} />
+        {/* <StyledSwitch size='md' colorScheme='gray' onChange={changeThemeToggle} isChecked={isDarkTheme} />
         <StyledSwitch
           size='md'
           colorScheme='red'
           onChange={changeLangToggle}
           isChecked={lang === 'en' ? false : true}
-        />
+        /> */}
       </StyledDiv>
+      <SettingModal isOpen={isOpen} onClose={onClose} initialRef={initialRef} />
     </>
   );
 };
@@ -68,7 +73,16 @@ const StyledA = styled.a`
 const StyledDiv = styled.div`
   position: absolute;
   text-align: right;
-  top: 2rem;
-  right: 3rem;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+
+  scale: 1;
+  :hover {
+    scale: 1.1;
+    cursor: pointer;
+  }
+  img {
+    transition: all 0.2s;
+  }
 `;
-const StyledSwitch = styled(Switch)``;
