@@ -1,18 +1,28 @@
 import { Center, Image, Switch } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import { useLaguageStore } from '../../store/laguageStore';
 import { useStyleStore } from '../../store/styleSore';
 const Header = () => {
   const { isDarkTheme, setStyles } = useStyleStore();
+  const { lang, setLang } = useLaguageStore();
 
   const changeThemeToggle = async () => {
     setStyles(!isDarkTheme);
+  };
+
+  const changeLangToggle = async () => {
+    setLang(lang === 'en' ? 'ko' : 'en');
   };
 
   useEffect(() => {
     window.localStorage.setItem('marktab-theme', String(isDarkTheme));
     // console.log('changeThemeToggle: ', window.localStorage.getItem('marktab-theme'));
   }, [isDarkTheme]);
+
+  useEffect(() => {
+    window.localStorage.setItem('mark-tab-lang', lang);
+  }, [lang]);
 
   return (
     <>
@@ -23,6 +33,12 @@ const Header = () => {
       </StyledCenter>
       <StyledDiv>
         <StyledSwitch size='md' colorScheme='gray' onChange={changeThemeToggle} isChecked={isDarkTheme} />
+        <StyledSwitch
+          size='md'
+          colorScheme='red'
+          onChange={changeLangToggle}
+          isChecked={lang === 'en' ? false : true}
+        />
       </StyledDiv>
     </>
   );
