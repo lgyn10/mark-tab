@@ -12,7 +12,9 @@ import {
   ModalOverlay,
 } from '@chakra-ui/react';
 import React, { ChangeEvent } from 'react';
+import { ENGLISH, KOREAN } from '../../../language/laguage';
 import { bookmarkStore } from '../../../store/bookmarkStore';
+import { useLaguageStore } from '../../../store/laguageStore';
 
 type TItemEditModalProps = {
   isOpen: boolean;
@@ -53,15 +55,19 @@ const ItemEditModal = ({
     deleteBookmarkNode(id);
     onClose();
   };
+
+  //! 언어 설정
+  const { lang } = useLaguageStore();
+
   return (
     <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>북마크 수정</ModalHeader>
+        <ModalHeader>{lang === 'en' ? ENGLISH.EDIT_BOOKMARK : KOREAN.EDIT_BOOKMARK}</ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>
           <FormControl>
-            <FormLabel>북마크 이름</FormLabel>
+            <FormLabel>{lang === 'en' ? ENGLISH.BOOKMARK_TITLE : KOREAN.BOOKMARK_TITLE}</FormLabel>
             <Input
               ref={initialRef}
               placeholder={itemTitle}
@@ -73,10 +79,10 @@ const ItemEditModal = ({
         </ModalBody>
         <ModalFooter>
           <Button colorScheme='blue' mr={3} onClick={() => editItemTitle(itemId, editTitle)}>
-            저장
+            {lang === 'en' ? ENGLISH.SAVE : KOREAN.SAVE}
           </Button>
           <Button colorScheme='red' onClick={() => deleteItem(itemId)}>
-            삭제
+            {lang === 'en' ? ENGLISH.DELETE : KOREAN.DELETE}
           </Button>
         </ModalFooter>
       </ModalContent>
