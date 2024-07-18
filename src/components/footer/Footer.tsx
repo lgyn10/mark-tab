@@ -15,6 +15,7 @@ export default Footer;
 
 const StyledCenter = styled(Center)<{ mainBackgroundColor: string; boardHeadingColor: string }>`
   background-color: ${(props) => props.mainBackgroundColor};
+  height: 1.5rem;
 `;
 
 const StyledA = styled.a`

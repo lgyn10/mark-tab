@@ -16,9 +16,11 @@ function App() {
       <GlobalStyle themeName={isDarkTheme ? 'dark' : 'light'} />
       <StyledContainer>
         <ChakraProvider>
-          <Header />
-          <BoardContainer />
-          <Footer />
+          <div className='wapper'>
+            <Header />
+            <BoardContainer />
+          </div>
+          <StyledFooter />
         </ChakraProvider>
       </StyledContainer>
     </ThemeProvider>
@@ -29,4 +31,15 @@ export default App;
 
 const StyledContainer = styled.div<{ mainBackgroundColor: string }>`
   background-color: ${(props) => props.theme.mainBackgroundColor};
+  height: calc(100vh - 1.5rem);
+  .wapper {
+    height: auto;
+    min-height: 100%;
+  }
+`;
+
+const StyledFooter = styled(Footer)`
+  height: 1.5rem;
+  position: relative;
+  transform: translateY(-100%);
 `;
