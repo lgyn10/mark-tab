@@ -19,8 +19,8 @@ const Board = ({ boardTitle, boardId }: TBoardProps) => {
       <StyledList>
         {items &&
           items.map((node) => {
-            if (!node.children) {
-              return <Item key={node.id} itemTitle={node.title} itemUrl={node.url!} itemId={node.id} />;
+            if (node.url) {
+              return <Item key={node.id} itemTitle={node.title} itemUrl={node.url} itemId={node.id} />;
             }
           })}
       </StyledList>
