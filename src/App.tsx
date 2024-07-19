@@ -1,6 +1,7 @@
 import { ChakraProvider } from '@chakra-ui/react';
 
 import styled, { ThemeProvider } from 'styled-components';
+import ApiTest from './ApiTest';
 import BoardContainer from './components/boardContainer/BoardContainer';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
@@ -20,6 +21,7 @@ function App() {
             <Header />
             <BoardContainer />
           </div>
+          <ApiTest />
           <StyledFooter />
         </ChakraProvider>
       </StyledContainer>

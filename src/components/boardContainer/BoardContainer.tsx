@@ -7,7 +7,9 @@ import Board from '../board/Board';
 
 const BoardContainer = () => {
   const { bookmarkNode, fetchBookmarkTreeNode } = bookmarkStore();
-  const boards = bookmarkNode?.children;
+
+  // // bookmarkNode가 없으면 null 반환
+  // if (!bookmarkNode) return null;
 
   useEffect(() => {
     fetchBookmarkTreeNode();
@@ -17,6 +19,8 @@ const BoardContainer = () => {
   useEffect(() => {
     // console.log('rerendering');
   }, [bookmarkNode]);
+
+  const boards = bookmarkNode?.children;
 
   return (
     <StyledContainer bg='white'>

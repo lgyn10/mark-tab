@@ -1,6 +1,7 @@
 import { Card, CardHeader, Heading, List } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { bookmarkStore } from '../../store/bookmarkStore';
+import { BookmarkTreeNode } from '../../store/types';
 import Item from '../item/Item';
 
 type TBoardProps = {
@@ -9,18 +10,30 @@ type TBoardProps = {
 };
 
 const Board = ({ boardTitle, boardId }: TBoardProps) => {
-  const { bookmarkNode } = bookmarkStore();
-  const items = bookmarkNode?.children!.find((node) => node.id === boardId)?.children;
+  // const { bookmarkNode } = bookmarkStore();
+  // const items = bookmarkNode?.children!.find((node) => node.id === boardId)?.children;
+
+  //!========================================================================================================================
+  const [itemsTest, setItemsTest] = useState<BookmarkTreeNode[]>();
+
+  useEffect(() => {
+    chrome.bookmarks.getChildren(boardId).then((res) => {
+      setItemsTest(res);
+    });
+  }, [boardId]);
+
+  //!=========================================================================================================================
+
   return (
     <StyledCard>
       <StyledCardHeader>
         <StyledHeading textAlign='center'>{boardTitle}</StyledHeading>
       </StyledCardHeader>
       <StyledList>
-        {items &&
-          items.map((node) => {
-            if (!node.children) {
-              return <Item key={node.id} itemTitle={node.title} itemUrl={node.url!} itemId={node.id} />;
+        {itemsTest &&
+          itemsTest.map((node) => {
+            if (node.url) {
+              return <Item key={node.id} itemTitle={node.title} itemUrl={node.url} itemId={node.id} />;
             }
           })}
       </StyledList>

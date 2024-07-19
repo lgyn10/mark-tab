@@ -6,18 +6,18 @@ interface Props {
   themeName: ThemeName;
 }
 export const GlobalStyle = createGlobalStyle<Props>`
-  @font-face {
+  /* @font-face {
     font-family: 'Pretendard Regular';
     font-style: normal;
     font-weight: 400;
-    src: local('Pretendard-Regular'), url('./fonts/Pretendard-Regular.woff2') format('woff2');
-  } 
+    src: local('Pretendard-Regular'), url('../fonts/Pretendard-Regular.woff2') format('woff2');
+  }  */
 
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Pretendard Regular' !important;
+    /* font-family: 'Pretendard Regular' !important; */
     font-size: 14px;
 
   }
