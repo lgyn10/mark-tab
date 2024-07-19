@@ -38,7 +38,7 @@ export const darkTheme: Theme = {
   containerBorderColor: '#514C48',
   containerBackgroundColor: '#1C2023',
   boardCardBackgroundColor: `#22272D`,
-  boardCardBorderColor: '#444C56', //'#23272A',
+  boardCardBorderColor: '#23272A',
   boardCardDividerColor: '#444C56', //'#778491',
   boardHeadingColor: '#C4D1DE',
   itemTextColor: '#778491',
