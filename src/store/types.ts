@@ -18,9 +18,10 @@ export interface BookmarkState {
   deleteBookmarkNode: (id: string) => void;
 }
 
-export interface CreateDetails {
-  index?: number; // 지정하지 않으면 자동으로 지정해줄 듯
-  parentId?: string;
-  title?: string;
-  url?: string;
-}
+//! 미사용
+// export interface CreateDetails {
+//   index?: number; // 지정하지 않으면 자동으로 지정해줄 듯
+//   parentId?: string;
+//   title?: string;
+//   url?: string;
+// }
