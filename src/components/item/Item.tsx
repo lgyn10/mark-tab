@@ -14,15 +14,40 @@ const Item = ({ itemTitle, itemUrl, itemId }: TItemProps) => {
   const [editTitle, setEditTitle] = useState(itemTitle);
 
   useEffect(() => {
-    //const hostUrl = new URL(itemUrl).host;
+    //! 1. google s2 favicon api
+    // const hostUrl_1 = new URL(itemUrl).host;
+    // const faviconURL_1 = `https://www.google.com/s2/favicons?domain=${hostUrl_1}&sz=64`;
+
+    //! 2. faviconkit api
+    // const hostUrl_2 = new URL(itemUrl).host;
+    // const faviconURL_2 = `https://api.faviconkit.com/${hostUrl_2}`;
+    // setFaviconUrl(faviconURL_2);
+
+    //! 3. faviconkit api 에러 메세지 처리 - cors 오류
+    // const fetchFaviconUrl = async (url: string) => {
+    //   try {
+    //     const response = await axios.get(`https://api.faviconkit.com/${new URL(url).host}`, {
+    //       headers: {
+    //         'Access-Control-Allow-Origin': '*',
+    //         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    //       },
+    //     });
+    //     // console.log(response);
+    //     setFaviconUrl(response.data);
+    //   } catch (error) {
+    //     // console.log(error);
+    //   }
+    //   setFaviconUrl('');
+    // };
+    // fetchFaviconUrl(itemUrl);
+
+    //! 4. chrome extension api
     const faviconUrl = (url: string) => {
       const newUrl = new URL(chrome.runtime.getURL('/_favicon/'));
       newUrl.searchParams.set('pageUrl', url);
       newUrl.searchParams.set('size', '64');
-      //console.log(newUrl.toString());
       return newUrl.toString();
     };
-    // const faviconURL = `https://api.faviconkit.com/${hostUrl}`;
     const faviconURL = faviconUrl(itemUrl);
     setFaviconUrl(faviconURL);
   }, []);
