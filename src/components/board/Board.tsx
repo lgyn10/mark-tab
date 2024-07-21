@@ -58,7 +58,8 @@ const StyledHeading = styled(Heading)<{ boardCardDividerColor: string; boardHead
     color: ${(props) => props.theme.boardHeadingColor};
     font-size: 18px;
     font-weight: bold;
-    padding-bottom: 5px;
+    padding-top: 0.3rem;
+    padding-bottom: 0.7rem;
     border-bottom: 1px solid ${(props) => props.theme.boardCardDividerColor};
   }
 `;
