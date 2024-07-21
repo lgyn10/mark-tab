@@ -13,7 +13,7 @@ function App() {
 
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-      <GlobalStyle themeName={isDarkTheme ? darkTheme : lightTheme} />
+      <GlobalStyle themeName={isDarkTheme ? 'dark' : 'light'} />
       <StyledContainer>
         <ChakraProvider>
           <div className='wapper'>
