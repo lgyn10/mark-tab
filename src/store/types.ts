@@ -1,13 +1,13 @@
 export interface BookmarkTreeNode {
   id: string;
   title: string;
-  index?: number;
   url?: string;
   children?: BookmarkTreeNode[];
+  index?: number;
+  parentId?: string;
   dataAdded?: number;
   dateLastUsed?: number;
   dateGroupModified?: number;
-  parentId?: string;
   unmodifiable?: 'managed';
 }
 
