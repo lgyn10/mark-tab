@@ -20,7 +20,6 @@ const BoardContainer = () => {
 
   return (
     <StyledContainer bg='white'>
-      {/* @ts-ignore */}
       <StyledMasonryGrid
         gap={15}
         defaultDirection={'end'}
