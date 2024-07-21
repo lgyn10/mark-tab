@@ -49,8 +49,6 @@ const StyledContainer = styled(Container)<{ containerBorderColor: string; contai
   border-radius: 1rem;
   display: flex;
   justify-content: space-around;
-  // border: 1.5px solid ${(props) => props.theme.containerBorderColor};
-  // background-color: ${(props) => props.theme.containerBackgroundColor} !important;
   background-color: transparent !important;
 `;
 

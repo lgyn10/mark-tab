@@ -10,14 +10,6 @@ const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = React.useRef(null);
 
-  // const changeThemeToggle = async () => {
-  //   setStyles(!isDarkTheme);
-  // };
-
-  // const changeLangToggle = async () => {
-  //   setLang(lang === 'en' ? 'ko' : 'en');
-  // };
-
   useEffect(() => {
     window.localStorage.setItem('marktab-theme', String(isDarkTheme));
     // console.log('changeThemeToggle: ', window.localStorage.getItem('marktab-theme'));
@@ -34,16 +26,9 @@ const Header = () => {
           <StyledImage src='/google-logo.png' />
         </StyledA>
       </StyledCenter>
-      <StyledDiv>
+      <SettingImgStyle>
         <Image src='/setting.png' onClick={onOpen} />
-        {/* <StyledSwitch size='md' colorScheme='gray' onChange={changeThemeToggle} isChecked={isDarkTheme} />
-        <StyledSwitch
-          size='md'
-          colorScheme='red'
-          onChange={changeLangToggle}
-          isChecked={lang === 'en' ? false : true}
-        /> */}
-      </StyledDiv>
+      </SettingImgStyle>
       <SettingModal isOpen={isOpen} onClose={onClose} initialRef={initialRef} />
     </>
   );
@@ -70,7 +55,7 @@ const StyledA = styled.a`
     scale: 1.1;
   }
 `;
-const StyledDiv = styled.div`
+const SettingImgStyle = styled.div`
   position: absolute;
   text-align: right;
   top: 0.5rem;
