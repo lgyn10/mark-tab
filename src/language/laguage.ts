@@ -1,6 +1,6 @@
 export const ENGLISH = {
   EDIT_BOOKMARK: 'Edit Bookmark',
-  BOOKMARK_TITLE: 'Bookmark Title',
+  BOOKMARK_TITLE: 'Title',
   SAVE: 'Save',
   DELETE: 'Delete',
   SETTING: 'Setting',
@@ -9,8 +9,8 @@ export const ENGLISH = {
 };
 
 export const KOREAN = {
-  EDIT_BOOKMARK: '북마크 수정',
-  BOOKMARK_TITLE: '북마크 제목',
+  EDIT_BOOKMARK: '편집',
+  BOOKMARK_TITLE: '북마크 이름',
   SAVE: '저장',
   DELETE: '삭제',
   SETTING: '세팅',

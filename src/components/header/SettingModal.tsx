@@ -42,7 +42,7 @@ const SettingModal = ({ isOpen, onClose, initialRef }: TSettingModalProps) => {
             <StyledSwitch size='md' colorScheme='blue' onChange={changeThemeToggle} isChecked={isDarkTheme} />
           </div>
           <div className='item'>
-            <Heading size='sm'>{lang === 'en' ? ENGLISH.LANG : KOREAN.LANG}</Heading>
+            <Heading size='sm'>{ENGLISH.LANG}</Heading>
             <StyledSwitch
               size='md'
               colorScheme='blue'
