@@ -14,8 +14,16 @@ const Item = ({ itemTitle, itemUrl, itemId }: TItemProps) => {
   const [editTitle, setEditTitle] = useState(itemTitle);
 
   useEffect(() => {
-    const hostUrl = new URL(itemUrl).host;
-    const faviconURL = `https://api.faviconkit.com/${hostUrl}`;
+    //const hostUrl = new URL(itemUrl).host;
+    const faviconUrl = (url: string) => {
+      const newUrl = new URL(chrome.runtime.getURL('/_favicon/'));
+      newUrl.searchParams.set('pageUrl', url);
+      newUrl.searchParams.set('size', '64');
+      //console.log(newUrl.toString());
+      return newUrl.toString();
+    };
+    // const faviconURL = `https://api.faviconkit.com/${hostUrl}`;
+    const faviconURL = faviconUrl(itemUrl);
     setFaviconUrl(faviconURL);
   }, []);
 
