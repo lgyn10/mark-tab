@@ -4,7 +4,6 @@ import styled, { ThemeProvider } from 'styled-components';
 import BoardContainer from './components/boardContainer/BoardContainer';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
-import Favicon from './Favicon';
 import { useStyleStore } from './store/styleSore';
 import { GlobalStyle } from './style/global';
 import { darkTheme, lightTheme } from './style/theme';
@@ -22,7 +21,6 @@ function App() {
             <BoardContainer />
           </div>
           <StyledFooter />
-          <Favicon />
         </ChakraProvider>
       </StyledContainer>
     </ThemeProvider>
