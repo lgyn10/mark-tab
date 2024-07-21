@@ -17,6 +17,7 @@ const Item = ({ itemTitle, itemUrl, itemId }: TItemProps) => {
     //! 1. google s2 favicon api
     // const hostUrl_1 = new URL(itemUrl).host;
     // const faviconURL_1 = `https://www.google.com/s2/favicons?domain=${hostUrl_1}&sz=64`;
+    // setFaviconUrl(faviconURL_1);
 
     //! 2. faviconkit api
     // const hostUrl_2 = new URL(itemUrl).host;
