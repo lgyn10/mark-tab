@@ -35,29 +35,28 @@ const ItemEditModal = ({
   handleEditTitle,
   itemId,
 }: TItemEditModalProps) => {
-  const { editBookmarkTitle, deleteBookmarkNode } = bookmarkStore((state) => ({
-    editBookmarkTitle: state.editBookmarkNodeTitle,
-    deleteBookmarkNode: state.deleteBookmarkNode,
-  }));
+  const { editBookmarkNodeTitle, deleteBookmarkNode } = bookmarkStore();
+
+  //! 언어 설정
+  const { lang } = useLaguageStore();
 
   const editItemTitle = (id: string, editTitle: string) => {
     console.log(editTitle);
-    editBookmarkTitle(id, editTitle);
+    editBookmarkNodeTitle(id, editTitle);
     onClose();
   };
+
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>, id: string, editTitle: string) => {
     if (event.key === 'Enter') {
-      editBookmarkTitle(id, editTitle);
+      editBookmarkNodeTitle(id, editTitle);
       onClose();
     }
   };
+
   const deleteItem = (id: string) => {
     deleteBookmarkNode(id);
     onClose();
   };
-
-  //! 언어 설정
-  const { lang } = useLaguageStore();
 
   return (
     <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
