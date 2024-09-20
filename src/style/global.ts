@@ -23,6 +23,6 @@ export const GlobalStyle = createGlobalStyle<Props>`
   }
   html,
 body {
-  background-color: ${(props) => (props.themeName === 'light' ? '#f7f8fb' : '#1C2128')};
+  background-color: ${(props) => (props.themeName === 'light' ? '#f7f8fb' : '#1F2020')};
 }
 `;

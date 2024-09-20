@@ -34,16 +34,16 @@ export const lightTheme: Theme = {
 
 export const darkTheme: Theme = {
   name: 'dark',
-  mainBackgroundColor: '#1C2128',
+  mainBackgroundColor: '#1F2020',
   containerBorderColor: '#514C48',
   containerBackgroundColor: '#1C2023',
-  boardCardBackgroundColor: `#2D333B`, //#22272D
-  boardCardBorderColor: '#23272A',
-  boardCardDividerColor: '#444C56',
-  boardHeadingColor: '#C4D1DE',
-  itemTextColor: '#778491',
-  itemHoverTextColor: '#468BE7',
-  itemHoverTextShadow: '#468BE7',
+  boardCardBackgroundColor: `#333333`, //#22272D
+  boardCardBorderColor: '#3C3C3C',
+  boardCardDividerColor: '#5E5E5E',
+  boardHeadingColor: '#969696',
+  itemTextColor: '#a8a8a8',
+  itemHoverTextColor: '#EEE',
+  itemHoverTextShadow: '#EEE',
   buttonBoxBackgroundColor: '#B97418',
   itemButtonFilterValue: 1,
 };
